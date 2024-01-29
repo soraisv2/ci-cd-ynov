@@ -17,7 +17,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test  --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/reportWebVitals.js --collectCoverageFrom=!src/index.js",
     "eject": "react-scripts eject",
-    "jsdoc": "jsdoc -c ./jsdoc.config.json -r -d ./docs"
+    "jsdoc": "jsdoc -c ./jsdoc.config.json -r -d ./docs",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.9",
+    "gh-pages": "^6.1.1",
     "jsdoc": "^4.0.2",
     "react-test-renderer": "^18.2.0"
   }
