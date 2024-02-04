@@ -60,15 +60,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      # Download previously shared build
-     - uses: actions/download-artifact@master
-       with:
-          name: page
-          path: .
-          
-     - uses: actions/configure-pages@v1
-     - uses: actions/upload-pages-artifact@v3
-       with:
-          path: .
      - name: Deploy to GitHub Pages
        id: deployment
        uses: actions/deploy-pages@v3 # or specific "vX.X.X" version tag for this action
