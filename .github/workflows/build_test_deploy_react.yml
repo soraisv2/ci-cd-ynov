@@ -34,7 +34,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@master
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: build
@@ -66,9 +66,9 @@ jobs:
           path: .
           
      - uses: actions/configure-pages@v1
-     - uses: actions/upload-pages-artifact@v1
+     - uses: actions/upload-pages-artifact@v3
        with:
           path: .
      - name: Deploy to GitHub Pages
        id: deployment
-       uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+       uses: actions/deploy-pages@v3 # or specific "vX.X.X" version tag for this action
