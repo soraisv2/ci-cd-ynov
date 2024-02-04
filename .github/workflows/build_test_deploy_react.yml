@@ -38,7 +38,7 @@ jobs:
         with:
           # Upload entire repository
           path: build
-          name: react-github-actions-build
+          name: github-pages
 
   # Deploy job
   deploy:
@@ -59,10 +59,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      # Download previously shared build
-      - name: Get artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: react-github-actions-build
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
