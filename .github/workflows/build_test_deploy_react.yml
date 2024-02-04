@@ -37,7 +37,11 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: '.'
+          path: |
+            build
+            node_modules
+            package.json
+            package-lock.json
 
   # Deploy job
   deploy:
