@@ -34,11 +34,12 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@master
         with:
           # Upload entire repository
           path: build
-          name: github-pages
+          name: page
+          if-no-files-found: error
 
   # Deploy job
   deploy:
@@ -59,6 +60,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      # Download previously shared build
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+     - uses: actions/download-artifact@master
+       with:
+          name: page
+          path: .
+          
+     - uses: actions/configure-pages@v1
+     - uses: actions/upload-pages-artifact@v1
+       with:
+          path: .
+     - name: Deploy to GitHub Pages
+       id: deployment
+       uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
