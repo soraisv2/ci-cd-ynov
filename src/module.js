@@ -4,7 +4,7 @@
  * @param {object} p An object representing a person, implementing a birth Date parameter.
  * @return {number} The age in years of p.
  */
-export function calculateAge(p) {
+function calculateAge(p) {
     if(!p) {
         throw new Error("missing param p")
     }
@@ -17,3 +17,5 @@ export function calculateAge(p) {
 //     birth: new Date("11/07/1991")
 // }
 // console.log(calculateAge(loise))
+
+export {calculateAge}
