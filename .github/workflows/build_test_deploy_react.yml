@@ -33,6 +33,8 @@ jobs:
           npm test  
       - name: Update versionning
         run: |
+          git config --global user.email "loise.fenoll@ynov.com"
+          git config --global user.name "Loïse Fenoll"
           npm i -g semver
           npm version $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}})
           npm version
