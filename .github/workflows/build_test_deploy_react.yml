@@ -39,6 +39,9 @@ jobs:
           npm version $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}})
           npm version
           echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}) >> README.md
+          git status
+          git add .
+          git push -m "Generate new version ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}"
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
