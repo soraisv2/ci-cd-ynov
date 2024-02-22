@@ -40,8 +40,6 @@ jobs:
           npm i -g semver
           npm version $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}})
           echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}) >> README.md
-          npm run jsdoc
-          npm run build --if-present
           git commit -a -m "new version ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}"
       - name: Build and docs
         run: |
