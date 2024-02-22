@@ -38,8 +38,6 @@ jobs:
           npm i -g semver
           npm version $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}})
           echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}) >> README.md
-          git commit -a -m "Generate new version ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}"
-          git push --no-verify
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
