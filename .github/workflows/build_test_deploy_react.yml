@@ -38,10 +38,12 @@ jobs:
           npm i -g semver
           npm version $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}})
           echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}) >> README.md
-      - name: Commit & Push changes
-        uses: actions-js/push@master
+          git commit -a -m "new version ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
