@@ -64,6 +64,7 @@ jobs:
           # Upload entire repository
           path: build
           if-no-files-found: error
+          name: build_and_deploy_${{env.GITHUB_VERSION_BUILD}}
 
   # Deploy job
   deploy:
