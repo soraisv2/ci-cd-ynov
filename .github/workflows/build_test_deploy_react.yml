@@ -31,6 +31,12 @@ jobs:
           npm ci
           npm run build --if-present
           npm test  
+      - name: Update versionning
+        run: |
+          npm i -g semver
+          npm version $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}})
+          npm version
+          echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}) >> README.md
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
