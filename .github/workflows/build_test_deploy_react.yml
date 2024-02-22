@@ -38,6 +38,10 @@ jobs:
         run: |
           npm i -g semver
           echo "GITHUB_VERSION_BUILD=$(echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}))" >> $GITHUB_ENV
+      - name: Download a previous artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build_and_deploy_$(npm -s run env echo '$npm_package_version')
       - name: Update versionning
         run: |
           git config --global user.email "loise.fenoll@ynov.com"
