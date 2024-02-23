@@ -83,10 +83,6 @@ jobs:
     needs: build_test
     # Specify runner + deployment step
     steps:
-      - name: Set env
-        run: |
-          npm i -g semver
-          echo "GITHUB_VERSION_BUILD=$(echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}))" >> $GITHUB_ENV
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
