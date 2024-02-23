@@ -61,9 +61,10 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: github-pages
-          github-token: ${{ secrets.GH_PAT }}
+          github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
+          repository: actions/toolkit
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: build
