@@ -61,6 +61,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
+          name: artifact-${{env.GITHUB_VERSION_BUILD}}
           # Upload entire repository
           path: build
           if-no-files-found: error
