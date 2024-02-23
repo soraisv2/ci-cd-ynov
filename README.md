@@ -81,3 +81,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 0.1.2-8020624614-52-1.0
 0.1.2-8020673050-53-1.0
 0.1.2-8020710828-54-1.0
+0.1.2-8020741002-55-1.0
