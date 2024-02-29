@@ -49,6 +49,7 @@ function App() {
         </a>
         <button onClick={clickOnMe}>Click me</button>
         <span data-testid="count">{count}</span>
+        <span>{usersCount} users already registered</span>
       </header>
     </div>
   );
