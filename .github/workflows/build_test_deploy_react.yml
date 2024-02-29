@@ -41,6 +41,7 @@ jobs:
         run: docker build --file DockerfileReact --tag react .
       - name: Build the stack
         run: docker-compose -f docker-compose-v2.yml up -d
+      - uses: cypress-io/github-action@v6
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
