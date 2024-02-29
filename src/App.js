@@ -1,12 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
+
+
 
 function App() {
   let [count, setCount] = useState(0);
+  let [usersCount, setUsersCount] = useState(0);
   const clickOnMe = () => {
     setCount(count+1);
   }
+
+  useEffect(() => {
+    async function countUsers() {
+      try {
+        console.log(process.env.REACT_APP_SERVER_PORT)
+        const api = axios.create({
+          baseURL: `http://localhost:${process.env.REACT_APP_SERVER_PORT}`
+        });
+
+        const response = await api.get(`/users`);
+        setUsersCount(response.length)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    countUsers()
+  }, [])
+
+
   return (
     <div className="App">
       <header className="App-header">

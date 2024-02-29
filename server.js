@@ -33,10 +33,10 @@ const router = express.Router();
 router.route("/").get(getAllUsers);
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 const corsOptions = {
-  origin: "http://localhost:5173", // for vite application
+  origin: "http://localhost:3000", 
   optionsSuccessStatus: 200,
 };
 
