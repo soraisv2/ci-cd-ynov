@@ -22,7 +22,8 @@ function App() {
         });
 
         const response = await api.get(`/users`);
-        setUsersCount(response.length)
+        console.log(response)
+        setUsersCount(response.data.utilisateurs.length)
       } catch (error) {
         console.error(error);
       }
@@ -49,7 +50,7 @@ function App() {
         </a>
         <button onClick={clickOnMe}>Click me</button>
         <span data-testid="count">{count}</span>
-        <span>{usersCount} users already registered</span>
+        <span><span data-cy="userCount">{usersCount}</span> user(s) already registered</span>
       </header>
     </div>
   );
