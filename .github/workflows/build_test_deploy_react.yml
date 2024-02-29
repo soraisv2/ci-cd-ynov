@@ -50,12 +50,7 @@ jobs:
           npm run jsdoc
           npm run build --if-present
       - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
-      - name: Build the stack
-        run: docker-compose -f docker-compose-v2.yml up -d
+        run: git push
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
@@ -87,6 +82,10 @@ jobs:
     needs: build_test
     # Specify runner + deployment step
     steps:
+      - name: Set env
+        run: |
+          npm i -g semver
+          echo "GITHUB_VERSION_BUILD=$(echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}))" >> $GITHUB_ENV
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
