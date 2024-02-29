@@ -34,11 +34,11 @@ jobs:
           npm ci
           npm test  
       - name: Build the Docker mysql image
-        run: docker build . --file Dockerfile --tag migration_mysql:$(date +%s)
+        run: docker build --file Dockerfile --tag migration_mysql . 
       - name: Build the Docker nodejs image
-        run: docker build . --file DockerfileNodejs --tag nodejs:$(date +%s)
+        run: docker build --file DockerfileNodejs --tag nodejs .
       - name: Build the Docker react image
-        run: docker build . --file DockerfileReact --tag react:$(date +%s)
+        run: docker build --file DockerfileReact --tag react .
       - name: Build the stack
         run: docker-compose -f docker-compose-v2.yml up -d
       - name: Upload coverage reports to Codecov
