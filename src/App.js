@@ -1,59 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-
-
-
 function App() {
-  let [count, setCount] = useState(0);
+  const port = process.env.REACT_APP_SERVER_PORT;
   let [usersCount, setUsersCount] = useState(0);
-  const clickOnMe = () => {
-    setCount(count+1);
-  }
 
   useEffect(() => {
     async function countUsers() {
       try {
-        console.log(process.env.REACT_APP_SERVER_PORT)
         const api = axios.create({
-          baseURL: `http://localhost:${process.env.REACT_APP_SERVER_PORT}`
+          baseURL: `http://localhost:${port}`
         });
-
         const response = await api.get(`/users`);
-        console.log(response)
         setUsersCount(response.data.utilisateurs.length)
       } catch (error) {
         console.error(error);
       }
     }
-
     countUsers()
   }, [])
-
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code data-testid="code-app">src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button onClick={clickOnMe}>Click me</button>
-        <span data-testid="count">{count}</span>
-        <span><span data-cy="userCount">{usersCount}</span> user(s) already registered</span>
+        <h1>Users manager</h1>
+        <p>{usersCount} user(s) already registered</p>
       </header>
     </div>
   );
 }
-
 export default App;
