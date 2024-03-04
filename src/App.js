@@ -3,10 +3,10 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const port = process.env.REACT_APP_SERVER_PORT;
   let [usersCount, setUsersCount] = useState(0);
 
   useEffect(() => {
+    const port = process.env.REACT_APP_SERVER_PORT;
     async function countUsers() {
       try {
         const api = axios.create({
