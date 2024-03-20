@@ -5,5 +5,6 @@
         "src/**/*js",
         "!src/reportWebVitals.js",
         "!src/index.js"
-    ]
+    ],
+    "setupFiles": ["<rootDir>/.jest/setEnvVars.js"]
 }
