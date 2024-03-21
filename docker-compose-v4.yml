@@ -24,6 +24,7 @@ services:
     ports:
       - 8080:8080
   server:
+    restart: always
     image: python
     volumes:
       - ./server:/server
