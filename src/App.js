@@ -1,11 +1,12 @@
 import './App.css';
+import { countUsers } from './api';
 import { useState, useEffect } from 'react';
 
 function App() {
   let [usersCount, setUsersCount] = useState(0);
   
   useEffect(() => {
-    const countUsers = async () => {
+    const setUsers = async () => {
       try {
         let count = await countUsers();
         setUsersCount(count)
@@ -14,7 +15,7 @@ function App() {
       }
     }
 
-    countUsers()
+    setUsers()
   }, [])
 
   return (
