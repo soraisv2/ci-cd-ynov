@@ -35,6 +35,11 @@ jobs:
           npm test  
       - name: Build the stack mysql - nodejs
         run: docker-compose -f docker-compose-v3.yml up -d
+      - name: api test
+        run: |
+          cd server
+          npm ci
+          npm test
       - name: Run e2e tests with cypress
         uses: cypress-io/github-action@v6
       - name: Stop the stack mysql - nodejs
