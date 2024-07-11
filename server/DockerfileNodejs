@@ -5,6 +5,8 @@ WORKDIR /server
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install --silent
-RUN npm install jest -g --silent
+
+# RUN npm install mysql --silent
+# RUN npm install jest -g --silent
 
 EXPOSE 8000

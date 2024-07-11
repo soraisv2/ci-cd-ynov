@@ -47,8 +47,8 @@ app.use(express.json());
 app.use("/users", router);
 
 
-app.listen(port, () => {
+/*app.listen(port, () => {
   console.log(`server running on port ${port}`);
-});
+});*/
 
 module.exports = app;
