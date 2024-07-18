@@ -18,25 +18,24 @@ const pool = mysql
  * @route GET /utilisateurs
  */
 const getAllUsers = (
-    async function (req, res, next) {
-      let sql = "SELECT * from utilisateur";
-      const [rows] = await pool.query(sql);
-      if (!rows.length) return res.status(204).json({ message: "empty list" });
+  async function (req, res, next) {
+    let sql = "SELECT * from utilisateur";
+    const [rows] = await pool.query(sql);
+    if (!rows.length) return res.status(200).json({ utilisateurs: [] });
 
-      return res.status(200).json({ utilisateurs: rows });
-    }
-  )
- 
+    return res.status(200).json({ utilisateurs: rows });
+  }
+)
+
 
 const router = express.Router();
 
 router.route("/").get(getAllUsers);
 
 const app = express();
-const port = process.env.PORT || 8000;
 
 const corsOptions = {
-  origin: "http://localhost:3000", 
+  origin: "http://localhost:3000",
   optionsSuccessStatus: 200,
 };
 
@@ -45,10 +44,5 @@ app.use(express.json());
 
 // api routes
 app.use("/users", router);
-
-
-/*app.listen(port, () => {
-  console.log(`server running on port ${port}`);
-});*/
 
 module.exports = app;
