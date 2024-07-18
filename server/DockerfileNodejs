@@ -7,6 +7,6 @@ WORKDIR /server
 RUN npm install mysql2 cors dotenv express
 
 # RUN npm install mysql --silent
-# RUN npm install jest -g --silent
+RUN npm install jest -g --silent
 
 EXPOSE 8000
