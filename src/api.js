@@ -1,6 +1,9 @@
 import axios from 'axios';
-const port = process.env.REACT_APP_SERVER_PORT;
-const API = `http://localhost:${port}`;
+//const port = process.env.REACT_APP_SERVER_PORT;
+//const API = `http://localhost:${port}`;
+const API = process.env.REACT_APP_SERVER_URL;
+
+
 export const countUsers = async () => {
     try {
         const response = await axios.get(`${API}/users`);
@@ -10,6 +13,7 @@ export const countUsers = async () => {
         throw error;
     }
 }
+
 
 export const getAllUsers = async () => {
     try {
