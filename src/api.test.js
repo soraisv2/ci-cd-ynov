@@ -20,7 +20,7 @@ describe('countUsers', () => {
     axios.get.mockImplementationOnce(() => Promise.resolve(data));
     await expect(countUsers()).resolves.toEqual(1);
     expect(axios.get).toHaveBeenCalledWith(
-      `http://localhost:3000/users`,
+      `https://ci-cd-back-ynov.vercel.app/users`,
     );
   });
 
