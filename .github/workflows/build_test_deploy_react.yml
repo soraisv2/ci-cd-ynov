@@ -5,6 +5,7 @@ on:
   # Listen to a repository dispatch event by the name of `dispatch-event`
   repository_dispatch:
     types: [dispatch-event]
+  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
