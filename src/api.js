@@ -6,10 +6,10 @@ const API = process.env.REACT_APP_SERVER_URL;
 
 export const countUsers = async () => {
     try {
-        const response = await axios.get(`${API}users`);
+        const response = await axios.get(`${API}/users`);
         return response.data.utilisateurs.length;
     } catch (error) {
-        console.error(error);
+        //console.error(error);
         throw error;
     }
 }
@@ -20,7 +20,7 @@ export const getAllUsers = async () => {
         const response = await axios.get(`${API}/users`);
         return response.data.utilisateurs;
     } catch (error) {
-        console.error(error);
+        //console.error(error);
         throw error;
     }
 }

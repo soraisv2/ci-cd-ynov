@@ -38,38 +38,18 @@ jobs:
           npm test  
         env: 
           REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
-      - name: Build the stack mysql - nodejs
-        run: docker-compose -f docker-compose.yml up -d
-      #- name: api test
-      #  run: |
-      #    cd server
-      #    npm ci
-      #    npm test
+      - name: Build the stack react
+        run: docker-compose up -d
+        env: 
+          REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
       - name: Run e2e tests with cypress
         uses: cypress-io/github-action@v6
-      - name: Stop the stack mysql - nodejs
-        run: docker-compose -f docker-compose.yml down
-      #- name: Build the stack mysql - py
-      #  run: docker-compose -f docker-compose-v4.yml up -d
-      #- name: Run e2e tests with cypress
-      #  uses: cypress-io/github-action@v6
-      #- name: Stop the stack mysql - py
-      #  run: docker-compose -f docker-compose-v3.yml down
+      - name: Stop the stack react
+        run: docker-compose down
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      #- name: Set env
-      #  run: |
-      #    npm i -g semver
-      #    echo "GITHUB_VERSION_BUILD=$(echo $(semver 0.1.1 -i prerelease --preid ${{github.run_id}}-${{github.run_number}}-${{github.run_attempt}}))" >> $GITHUB_ENV
-      #- name: Update versionning
-      #  run: |
-      #    git config --global user.email "loise.fenoll@ynov.com"
-      #    git config --global user.name "Loïse Fenoll"
-      #    npm version ${{env.GITHUB_VERSION_BUILD}}
-      #    echo ${{env.GITHUB_VERSION_BUILD}} >> README.md
-      #    git commit -a -m "new version ${{env.GITHUB_VERSION_BUILD}}"
       - name: Build and docs
         run: |
           npm run jsdoc

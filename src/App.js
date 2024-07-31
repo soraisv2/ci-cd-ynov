@@ -11,7 +11,7 @@ function App() {
         let count = await countUsers();
         setUsersCount(count)
       } catch (error) {
-        console.error(error);
+        //console.error(error);
       }
     }
 
@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Users manager</h1>
-        <p>{usersCount} user(s) already registered</p>
+        <p><span data-testid="count">{usersCount}</span> user(s) already registered</p>
       </header>
     </div>
   );
