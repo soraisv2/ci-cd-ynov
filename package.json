@@ -19,9 +19,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build-npm": "NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src --out-dir dist --copy-files",
-    "test": "react-scripts test  --coverage --collectCoverageFrom=src/*js --collectCoverageFrom=!src/reportWebVitals.js --collectCoverageFrom=!src/index.js --watchAll=false --setupFiles=./.jest/setEnvVars.js",
+    "test": "react-scripts test  --coverage --collectCoverageFrom=src/**/*js* --collectCoverageFrom=!src/reportWebVitals.js --collectCoverageFrom=!src/index.js --watchAll=false --setupFiles=./.jest/setEnvVars.js",
     "eject": "react-scripts eject",
     "jsdoc": "jsdoc -R ./README.md -c ./jsdoc.config.json -r -d ./public/docs",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "cypress": "cypress open"
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@babel/cli": "^7.25.7",
     "@babel/core": "^7.25.8",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-react-jsx": "^7.25.7",
     "@babel/preset-env": "^7.23.9",
     "cypress": "^13.6.6",
