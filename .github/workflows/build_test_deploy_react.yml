@@ -56,7 +56,7 @@ jobs:
         env: 
           REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
       - name: build package on NPM 📦
-        run: pm run build-npm
+        run: npm run build-npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish package on NPM 📦
