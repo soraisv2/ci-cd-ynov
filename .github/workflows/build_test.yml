@@ -36,7 +36,9 @@ jobs:
         env: 
           REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
       - name: Build the stack react
-        run: docker-compose up -d
+        run: |
+          docker-compose --version
+          docker-compose up -d
         env: 
           REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
       - name: Run e2e tests with cypress
