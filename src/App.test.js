@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import App from './App';
 import axios from 'axios';
 jest.mock('axios');
@@ -8,6 +8,13 @@ test('renders users manager content', () => {
   const titleElement = screen.getByText(/Users/i);
   expect(titleElement).toBeInTheDocument();
   expect(titleElement).toHaveTextContent(/Users manager/i);
+});
+
+describe('Home Page', () => {    
+  it('devrait correspondre au snapshot', () => {       
+    const tree = render(<div>Hello world!</div>);       
+    fireEvent.click(tree.getByText('Hello world!'));    
+  });
 });
 
 test('renders 0 user', async() => {
