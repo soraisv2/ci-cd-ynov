@@ -1,7 +1,7 @@
 {
   "name": "ci-cd-ynov",
   "version": "0.1.2",
-  "private": true,
+  "private": false,
   "homepage": "https://loise.github.io/ci-cd-ynov/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
