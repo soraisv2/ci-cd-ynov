@@ -55,12 +55,11 @@ jobs:
           npm run build --if-present
         env: 
           REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
-      - name: build package on NPM 📦
-        run: npm run build-npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish package on NPM 📦
-        run: npm publish
+      - name: build and publish package on NPM 📦
+        run: |
+          npm run build-npm
+          npm version patch
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Setup Pages
