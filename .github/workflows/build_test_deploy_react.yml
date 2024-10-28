@@ -57,6 +57,8 @@ jobs:
           REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
       - name: build and publish package on NPM 📦
         run: |
+          git config --global user.email "loise.fenoll@ynov.com"
+          git config --global user.name "Loise Fenoll"
           npm run build-npm
           npm version patch
           npm publish
