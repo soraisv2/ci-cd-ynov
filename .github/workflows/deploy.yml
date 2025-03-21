@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Déclenche le workflow sur la branche "main"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout le code source
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Installer Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 23.8.0 # Utilisez la version de Node.js requise par votre projet
+
+    # 3. Installer les dépendances
+    - name: Install dependencies
+      run: npm install
+
+    # 4. Construire le projet
+    - name: Build project
+      run: npm run build
+
+    # 5. Déployer sur GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build # Dossier généré par `npm run build`
