@@ -47,31 +47,52 @@ const Form = () => {
             <Toaster message={toaster.message} type={toaster.type} />
             <div>
                 <label htmlFor="firstName">Nom:</label>
-                <input id="firstName" type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
-                {errors.firstName && <span className="error">{errors.firstName}</span>}
+                <input
+                    data-testid="firstName"
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                />
+                <span data-testid="error-firstName" className="error">{errors.firstName}</span>
             </div>
             <div>
                 <label htmlFor="lastName">Prénom:</label>
-                <input id="lastName" type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
+                <input data-testid="lastName" id="lastName" type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
                 {errors.lastName && <span className="error">{errors.lastName}</span>}
             </div>
             <div>
                 <label htmlFor="email">Email:</label>
-                <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} />
-                {errors.email && <span className="error">{errors.email}</span>}
+                <input
+                    data-testid="email"
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+                {errors.email && <span data-testid="error-email" className="error">{errors.email}</span>}
             </div>
             <div>
                 <label htmlFor="birthDate">Date de naissance:</label>
-                <input id="birthDate" type="date" name="birthDate" value={formData.birthDate} onChange={handleChange} />
-                {errors.birthDate && <span className="error">{errors.birthDate}</span>}
+                <input
+                    data-testid="birthDate"
+                    id="birthDate"
+                    name="birthDate"
+                    type="date"
+                    value={formData.birthDate}
+                    onChange={(e) => setFormData({ ...formData, birthDate: e.target.value })}
+                />
+                {errors.birthDate && <span data-testid="error-birthDate" className="error">{errors.birthDate}</span>}
             </div>
             <div>
                 <label htmlFor="city">Ville:</label>
-                <input id="city" type="text" name="city" value={formData.city} onChange={handleChange} />
+                <input data-testid="city" id="city" type="text" name="city" value={formData.city} onChange={handleChange} />
             </div>
             <div>
                 <label htmlFor="postalCode">Code postal:</label>
-                <input id="postalCode" type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} />
+                <input data-testid="postalCode" id="postalCode" type="text" name="postalCode" value={formData.postalCode} onChange={handleChange} />
                 {errors.postalCode && <span className="error">{errors.postalCode}</span>}
             </div>
             <button type="submit" disabled={!Object.values(formData).every((field) => field)}>
