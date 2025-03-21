@@ -47,7 +47,7 @@ Le projet utilise GitHub Actions pour :
 ## Déploiement
 
 L'application est déployée automatiquement sur GitHub Pages à chaque push sur la branche master.
-URL de production : [https://Hugogoncalves06.github.io/IntegrationContinue/](https://Hugogoncalves06.github.io/IntegrationContinue/)
+URL de production : [https://soraisv2.github.io/ci-cd-ynov/](https://soraisv2.github.io/ci-cd-ynov/)
 
 ## Versions
 

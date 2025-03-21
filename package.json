@@ -2,7 +2,7 @@
   "name": "ci-cd-ynov",
   "version": "0.1.2",
   "private": false,
-  "homepage": "https://Hugogoncalves06.github.io/IntegrationContinue/",
+  "homepage": "https://soraisv2.github.io/ci-cd-ynov/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
