@@ -1,32 +1,29 @@
+import React, { useState } from 'react';
+import RegistrationForm from './components/forms/RegistrationForm';
+import Toastr from './components/toastr/Toastr';
 import './App.css';
-import { countUsers } from './api';
-import Form from "./components/Form";
-import { useState, useEffect } from 'react';
 
+/**
+ * The main application component that renders the registration form and a toastr notification
+ * upon successful registration.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered App component.
+ */
 function App() {
-  let [usersCount, setUsersCount] = useState(0);
-  
-  useEffect(() => {
-    const setUsers = async () => {
-      try {
-        let count = await countUsers();
-        setUsersCount(count)
-      } catch (error) {
-        //console.error(error);
-      }
-    }
-
-    setUsers()
-  }, [])
+  const [successful, setSuccessful] = useState(false);
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Users manager</h1>
-        <Form />
-        <p><span data-testid="count">{usersCount}</span> user(s) already registered</p>
+        <h1>Formulaire d'enregistrement</h1>
       </header>
+      <main>
+        <RegistrationForm setSuccessful={setSuccessful} />
+        {successful && <Toastr setSuccessful={setSuccessful} />}
+      </main>
     </div>
   );
 }
+
 export default App;
