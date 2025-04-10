@@ -1,5 +1,5 @@
 {
-  "name": "ci-cd-ynov",
+  "name": "ci-cd-ynov-vsorais",
   "version": "0.1.2",
   "private": false,
   "homepage": "https://soraisv2.github.io/ci-cd-ynov/",
@@ -46,10 +46,10 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.25.7",
-    "@babel/core": "^7.25.8",
+    "@babel/cli": "^7.27.0",
+    "@babel/core": "^7.26.10",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/plugin-transform-react-jsx": "^7.25.7",
+    "@babel/plugin-transform-react-jsx": "^7.25.9",
     "@babel/preset-env": "^7.23.9",
     "cypress": "^13.6.6",
     "gh-pages": "^6.3.0",
