@@ -113,5 +113,4 @@ jobs:
     steps:
       - name: Deploy to github pages
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: build.$(date +%s)
+        id: deployment
