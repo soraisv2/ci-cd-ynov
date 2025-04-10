@@ -1,6 +1,6 @@
 {
   "name": "ci-cd-ynov-vsorais",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "homepage": "https://soraisv2.github.io/ci-cd-ynov/",
   "dependencies": {
