@@ -64,19 +64,19 @@ jobs:
         uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      - name: Build and docs
-        run: |
-          npm run jsdoc
-          npm run build --if-present
-        env: 
-          REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
+      # - name: Build and docs
+      #   run: |
+      #     npm run jsdoc
+      #     npm run build --if-present
+      #   env: 
+      #     REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.CI_CD_YNOV_VSORAIS_NPM }}" > ~/.npmrc
       - name: Check version
         run: |
           LOCAL_VERSION=$(node -p "require('./package.json').version")
           echo $LOCAL_VERSION
-          NPM_VERSION=$(npm view ci-cd-ynov version)
+          NPM_VERSION=$(npm view ci-cd-ynov-vsorais version)
           echo $NPM_VERSION
           if [ "$LOCAL_VERSION" != "$NPM_VERSION" ]; then
             echo "NEW_VERSION=true" >> $GITHUB_ENV
@@ -100,7 +100,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
-          # if-no-files-found: error
 
   deploy:
     needs: build_test
