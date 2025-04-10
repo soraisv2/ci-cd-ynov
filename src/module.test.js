@@ -2,50 +2,34 @@ import { calculateAge } from './module';
 let person;
 
 beforeEach(() => {
-    const date = new Date();
+    const currentYear = new Date().getFullYear();
     person = {
-        birth: new Date(date.setFullYear(date.getFullYear() - 20))
+        birth: new Date(currentYear - 20, 0, 1) // Définit une date de naissance au 1er janvier
     };
 });
 
 describe('calculateAge', () => {
     it('calcule correctement l\'âge d\'une personne', () => {
-        // L'âge de Loïse est de 33 ans
-        expect(calculateAge(person)).toEqual(20);
+        expect(calculateAge(person)).toBe(20);
     });
 
     describe('Cas d\'erreur', () => {
         it('devrait lever une erreur quand aucun argument n\'est fourni', () => {
-            expect(() => {
-                calculateAge();
-            }).toThrow('Argument requis');
+            expect(() => calculateAge()).toThrow('Argument requis');
         });
 
         it('devrait lever une erreur quand l\'argument n\'est pas un objet', () => {
-            const invalidInputs = [
-                { input: 42, type: 'number' },
-                { input: 'string', type: 'string' },
-                { input: true, type: 'boolean' },
-                { input: null, type: 'null' },
-                { input: undefined, type: 'undefined' }
-            ];
-            
-            // Les arguments suivants ne sont pas des objets
-            invalidInputs.forEach(({ input }) => {
-                expect(() => {
-                    calculateAge(input);
-                }).toThrow('L\'argument doit être un objet');
+            const invalidInputs = [42, 'string', true, null, undefined];
+
+            invalidInputs.forEach(input => {
+                expect(() => calculateAge(input)).toThrow('L\'argument doit être un objet');
             });
         });
 
         it('devrait lever une erreur quand l\'objet ne contient pas un champ birth', () => {
-            const person = {
-                name: 'John',
-                age: 30
-            };
-            expect(() => {
-                calculateAge(person);
-            }).toThrow('L\'objet doit contenir une propriété birth');
+            const invalidPerson = { name: 'John', age: 30 };
+
+            expect(() => calculateAge(invalidPerson)).toThrow('L\'objet doit contenir une propriété birth');
         });
 
         it('devrait lever une erreur quand birth n\'est pas un objet Date', () => {
@@ -57,11 +41,8 @@ describe('calculateAge', () => {
                 { birth: undefined }
             ];
 
-            // Les valeurs suivantes ne sont pas des objets Date
             invalidBirthTypes.forEach(person => {
-                expect(() => {
-                    calculateAge(person);
-                }).toThrow('La propriété birth doit être un objet Date');
+                expect(() => calculateAge(person)).toThrow('La propriété birth doit être un objet Date');
             });
         });
 
@@ -72,11 +53,8 @@ describe('calculateAge', () => {
                 { birth: new Date(NaN) }
             ];
 
-            // Les dates suivantes sont invalides
             invalidDates.forEach(person => {
-                expect(() => {
-                    calculateAge(person);
-                }).toThrow('La date fournie est invalide');
+                expect(() => calculateAge(person)).toThrow('La date fournie est invalide');
             });
         });
     });

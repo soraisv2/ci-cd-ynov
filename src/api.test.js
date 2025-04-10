@@ -2,26 +2,21 @@ import { countUsers, getAllUsers } from './api';
 import axios from 'axios';
 jest.mock('axios');
 
+const mockApiUrl = `${process.env.REACT_APP_SERVER_URL}/users`;
+
 describe('countUsers', () => {
   it('fetches successfully data from an API', async () => {
-    const data = {
+    const mockData = {
       data: {
         utilisateurs: [
-          {
-            id: '1',
-            nom: 'a',
-            prenom: 'b',
-            email: 'c@c.fr'
-          }
+          { id: '1', nom: 'a', prenom: 'b', email: 'c@c.fr' },
         ],
       },
     };
 
-    axios.get.mockImplementationOnce(() => Promise.resolve(data));
+    axios.get.mockImplementationOnce(() => Promise.resolve(mockData));
     await expect(countUsers()).resolves.toEqual(1);
-    expect(axios.get).toHaveBeenCalledWith(
-      `${process.env.REACT_APP_SERVER_URL}/users`,
-    );
+    expect(axios.get).toHaveBeenCalledWith(mockApiUrl);
   });
 
   it('fetches erroneously data from an API', async () => {
@@ -37,24 +32,17 @@ describe('countUsers', () => {
 
 describe('getAllUsers', () => {
   it('fetches successfully data from an API', async () => {
-    const data = {
+    const mockData = {
       data: {
         utilisateurs: [
-          {
-            id: '1',
-            nom: 'a',
-            prenom: 'b',
-            email: 'c@c.fr'
-          }
+          { id: '1', nom: 'a', prenom: 'b', email: 'c@c.fr' },
         ],
       },
     };
 
-    axios.get.mockImplementationOnce(() => Promise.resolve(data));
-    await expect(getAllUsers()).resolves.toEqual(data.data.utilisateurs);
-    expect(axios.get).toHaveBeenCalledWith(
-      `${process.env.REACT_APP_SERVER_URL}/users`,
-    );
+    axios.get.mockImplementationOnce(() => Promise.resolve(mockData));
+    await expect(getAllUsers()).resolves.toEqual(mockData.data.utilisateurs);
+    expect(axios.get).toHaveBeenCalledWith(mockApiUrl);
   });
 
   it('fetches erroneously data from an API', async () => {
